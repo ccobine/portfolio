@@ -1,7 +1,7 @@
 **Regulatory and medical device writing**
 1\. Instructions for use: Beckman Coulter LS 13 320 Laser Diffraction Particle Size Analyzer
 
-Published: Beckman Coulter, Inc. | PN B05577AB | October 2011
+   Published: Beckman Coulter, Inc. | PN B05577AB | October 2011
 
 \[See B05577AB_example.pdf]
 
