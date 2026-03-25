@@ -1,3 +1,12 @@
+**Regulatory and medical device writing**
+1\. Instructions for use: Beckman Coulter LS 13 320 Laser Diffraction Particle Size Analyzer
+
+Published: Beckman Coulter, Inc. | PN B05577AB | October 2011
+
+\[See B05577AB_example.pdf]
+
+Structured IFU for an FDA-regulated Class II laser instrument. The document covers safety classifications, laser precautions per 21 CFR Subchapter J, operational procedures, and user conventions. Delivered in Beckman Coulter's structured FrameMaker format.
+
 **Developer Documentation Samples**
 
 1\. Getting Started with Triton CLI on Windows Subsystem for Linux
