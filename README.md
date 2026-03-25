@@ -1,4 +1,5 @@
 **Regulatory and medical device writing**
+
 1\. Instructions for use: Beckman Coulter LS 13 320 Laser Diffraction Particle Size Analyzer
 
    Published: Beckman Coulter, Inc. | PN B05577AB | October 2011
@@ -55,18 +56,3 @@ Structured IFU for an FDA-regulated Class II laser instrument. The document cove
 
    configuration, security/IAM, code examples
 
-**Additional Experience**
-
-At Samsung/Joyent (2017-2023), I created and managed 26 ServiceNow technical
-
-knowledge bases serving developer, admin, and end-user audiences. Work included
-
-API documentation, infrastructure guides, CLI tutorials, and platform
-
-configuration for distributed cloud systems.
-
-Current work (2024-present) includes testing and refining AI models for content
-
-generation, architecting enterprise documentation governance systems, and
-
-creating technical compliance documentation.
