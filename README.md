@@ -30,11 +30,7 @@ Structured IFU for an FDA-regulated Class II laser instrument. The document cove
 
    \[See Hugo\_Static\_Site\_Setup\_Guide.pdf\]
 
-   Installation guide for Hugo documentation toolchain on Windows, covering Go
-
-   language setup, Chocolatey package manager, and markdown processor
-
-   configuration.
+   Short instructions based on a more detailed installation guide for Hugo documentation toolchain on Windows, covering Go language setup, Chocolatey package manager, and markdown processor configuration.
 
    Demonstrates: Docs-as-code workflows, documentation tooling, developer
 
