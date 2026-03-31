@@ -1,123 +1,490 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carol Cobine Technical Writing Portfolio</title>
-    <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
-            line-height: 1.6;
-            max-width: 800px;
-            margin: 40px auto;
-            padding: 20px;
-            color: #333;
-        }
-        h1 {
-            color: #2c3e50;
-            border-bottom: 3px solid #3498db;
-            padding-bottom: 10px;
-        }
-        h2 {
-            color: #34495e;
-            margin-top: 30px;
-        }
-        .sample {
-            background: #f8f9fa;
-            padding: 20px;
-            margin: 20px 0;
-            border-left: 4px solid #3498db;
-        }
-        .sample h3 {
-            margin-top: 0;
-            color: #2c3e50;
-        }
-        .meta {
-            color: #7f8c8d;
-            font-size: 0.9em;
-            margin: 10px 0;
-        }
-        .demonstrates {
-            font-style: italic;
-            color: #555;
-            margin-top: 10px;
-        }
-        a {
-            color: #3498db;
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-        .contact {
-            margin-top: 40px;
-            padding-top: 20px;
-            border-top: 1px solid #ddd;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Carol Cobine — Technical writing portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink:       #1a1a2e;
+      --ink-mid:   #3d3d5c;
+      --ink-light: #6b6b8a;
+      --rule:      #dcdce8;
+      --accent:    #1a4a8a;
+      --accent-lt: #e8eef7;
+      --bg:        #fafafa;
+      --white:     #ffffff;
+      --tag-bg:    #f0f0f7;
+      --tag-ink:   #3d3d5c;
+      --radius:    4px;
+      --max:       760px;
+    }
+
+    html { font-size: 11px; }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      font-size: 1rem;
+      line-height: 1.65;
+      color: var(--ink);
+      background: var(--bg);
+      padding: 0;
+    }
+
+    /* ── Layout shell ── */
+    .page {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 56px 32px 80px;
+    }
+
+    /* ── Header ── */
+    .header {
+      padding-bottom: 36px;
+      border-bottom: 2px solid var(--ink);
+      margin-bottom: 40px;
+    }
+
+    .header-name {
+      font-size: 2.4rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      line-height: 1.1;
+      margin-bottom: 6px;
+    }
+
+    .header-title {
+      font-size: 1.1rem;
+      font-weight: 300;
+      color: var(--ink-mid);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .header-contact {
+      font-size: 0.95rem;
+      color: var(--ink-light);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px 16px;
+      align-items: center;
+    }
+
+    .header-contact a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .header-contact a:hover { text-decoration: underline; }
+
+    .sep { color: var(--rule); }
+
+    /* ── Bio ── */
+    .bio {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: var(--ink-mid);
+      margin-bottom: 48px;
+      max-width: 680px;
+    }
+
+    .bio strong {
+      color: var(--ink);
+      font-weight: 500;
+    }
+
+    /* ── Section headings ── */
+    .section-label {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 20px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    section { margin-bottom: 52px; }
+
+    /* ── Skills grid ── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+      gap: 20px;
+    }
+
+    .skill-group h3 {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 8px;
+      letter-spacing: 0.01em;
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+    }
+
+    .tag {
+      font-size: 0.82rem;
+      background: var(--tag-bg);
+      color: var(--tag-ink);
+      padding: 3px 9px;
+      border-radius: var(--radius);
+      font-family: 'Roboto Mono', monospace;
+      font-weight: 400;
+      line-height: 1.5;
+    }
+
+    /* ── Sample cards ── */
+    .sample {
+      border: 1px solid var(--rule);
+      border-left: 3px solid var(--accent);
+      background: var(--white);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 22px 24px 20px;
+      margin-bottom: 16px;
+      transition: border-left-color 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .sample:hover {
+      border-left-color: #0d2f5e;
+      box-shadow: 0 2px 12px rgba(26,74,138,0.08);
+    }
+
+    .sample-meta {
+      font-size: 0.82rem;
+      color: var(--ink-light);
+      margin-bottom: 6px;
+      font-style: italic;
+    }
+
+    .sample h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 4px;
+      line-height: 1.3;
+    }
+
+    .sample-link {
+      display: inline-block;
+      font-size: 0.88rem;
+      color: var(--accent);
+      font-weight: 500;
+      text-decoration: none;
+      margin-bottom: 12px;
+    }
+    .sample-link:hover { text-decoration: underline; }
+
+    .sample-link::after { content: " →"; }
+
+    .sample p {
+      font-size: 0.97rem;
+      color: var(--ink-mid);
+      line-height: 1.65;
+      margin-bottom: 12px;
+    }
+
+    .demonstrates {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      align-items: center;
+    }
+
+    .demonstrates-label {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--ink-light);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-right: 2px;
+    }
+
+    /* ── Additional experience ── */
+    .xp-block {
+      background: var(--accent-lt);
+      border-radius: var(--radius);
+      padding: 20px 22px;
+      margin-bottom: 14px;
+    }
+
+    .xp-block h3 {
+      font-size: 0.97rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 6px;
+    }
+
+    .xp-block p {
+      font-size: 0.97rem;
+      color: var(--ink-mid);
+      line-height: 1.65;
+    }
+
+    .xp-block strong {
+      color: var(--ink);
+      font-weight: 500;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 560px) {
+      .page { padding: 36px 20px 60px; }
+      .header-name { font-size: 1.9rem; }
+      .skills-grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
 </head>
 <body>
-    <h1>Technical Writing Portfolio</h1>
-    <p><strong>Carol Cobine</strong><br>
-    <a href="mailto:carolcobine@gmail.com">carolcobine@gmail.com</a> | 
-    <a href="https://www.linkedin.com/in/carol-cobine-3451524" target="_blank">LinkedIn</a></p>
+<div class="page">
 
-    <p>I am a senior technical writer, documentation and knowledge management specialist with 20+ years of experience translating complex technical systems into clear, user-facing content for non-technical audiences. I’ve led documentation efforts for cloud platforms, enterprise IT, and compliance-focused environments, creating how-to guides, knowledge base articles, SOPs, and training materials that improve self-service and reduce support load. I’m comfortable working closely with product, engineering, and support teams, and I enjoy turning content into discoverable, user-friendly documentation.</p>
-
-    <h2>Documentation Samples</h2>
-<div class="sample">
- <h3>1. Beckman Coulter LS 13 320 Laser Diffraction Particle Size Analyzer</h3>
-<p class="meta">Published: Beckman Coulter, Inc. | PN B05577AB | October 2011<p class="meta">
-<p><a href="B05577AB_example.pdf" target="_blank">Download PDF →</a></p>
-<p>Structured IFU for an FDA-regulated Class II laser instrument. The document covers safety classifications, 
-laser precautions per 21 CFR Subchapter J, operational procedures, and user conventions. Delivered in Beckman Coulter's structured FrameMaker format.</p>
-    <p class="demonstrates">Demonstrates: Regulatory and medical device writing, structured authoring</p>
+  <!-- Header -->
+  <header class="header">
+    <div class="header-name">Carol Cobine</div>
+    <div class="header-title">Senior technical writer &amp; knowledge management specialist</div>
+    <div class="header-contact">
+      <a href="mailto:carolcobine@gmail.com">carolcobine@gmail.com</a>
+      <span class="sep">|</span>
+      <a href="https://www.linkedin.com/in/carol-cobine-3451524" target="_blank" rel="noopener">LinkedIn</a>
     </div>
+  </header>
+
+  <!-- Bio -->
+  <p class="bio">
+    Senior technical writer and documentation strategist with <strong>deep experience</strong>
+    building knowledge systems from the ground up across cloud infrastructure, enterprise IT, medical devices,
+    and regulated environments. Experienced leading documentation programs at scale — including
+    <strong>26 ServiceNow knowledge bases</strong> at Joyent/Samsung and an enterprise KB audit and
+    AI response tuning engagement at the American Cancer Society. Compliance documentation under my
+    management has passed federal audit with <strong>zero findings</strong>. Comfortable working
+    across product, engineering, and support teams to create content that improves self-service,
+    reduces ticket load, and holds up to scrutiny.
+  </p>
+
+  <!-- Skills and tools -->
+  <section>
+    <div class="section-label">Skills and tools</div>
+    <div class="skills-grid">
+
+      <div class="skill-group">
+        <h3>Authoring and publishing</h3>
+        <div class="tag-list">
+          <span class="tag">FrameMaker</span>
+          <span class="tag">MadCap Flare</span>
+          <span class="tag">Confluence</span>
+          <span class="tag">Document360</span>
+          <span class="tag">ServiceNow KB</span>
+          <span class="tag">Hugo</span>
+          <span class="tag">Adobe InDesign</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <h3>Docs-as-code</h3>
+        <div class="tag-list">
+          <span class="tag">GitHub / Git</span>
+          <span class="tag">Markdown</span>
+          <span class="tag">Static site generators</span>
+          <span class="tag">GitHub Pages</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <h3>Content types</h3>
+        <div class="tag-list">
+          <span class="tag">KB articles</span>
+          <span class="tag">API docs</span>
+          <span class="tag">Process docs</span>
+          <span class="tag">IFUs</span>
+          <span class="tag">SOPs</span>
+          <span class="tag">Compliance docs</span>
+          <span class="tag">Training materials</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <h3>Domains</h3>
+        <div class="tag-list">
+          <span class="tag">Cloud infrastructure</span>
+          <span class="tag">Developer tooling</span>
+          <span class="tag">NOC / SecOps</span>
+          <span class="tag">Medical devices</span>
+          <span class="tag">Regulated environments</span>
+          <span class="tag">AI / LLM tuning</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <h3>Strategy and governance</h3>
+        <div class="tag-list">
+          <span class="tag">KB audits</span>
+          <span class="tag">Content strategy</span>
+          <span class="tag">Information architecture</span>
+          <span class="tag">Style guide authorship</span>
+          <span class="tag">DMS implementation</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <h3>Instructional design</h3>
+        <div class="tag-list">
+          <span class="tag">Video scripting and production oversight</span>
+          <span class="tag">Instructional design</span>
+          <span class="tag">Adult learning principles</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Documentation samples -->
+  <section>
+    <div class="section-label">Documentation samples</div>
+
+    <!-- Sample 1 -->
     <div class="sample">
-        <h3>2. Getting Started with Triton CLI on Windows Subsystem for Linux</h3>
-        <p class="meta">Published: Triton DataCenter Blog (2018)<p class="meta">
-        <p><a href="https://www.tritondatacenter.com/blog/getting-started-windows-wsl" target="_blank">View Live Article →</a></p>
-        <p>Step-by-step CLI installation tutorial using Windows Subsystem for Linux. Includes prerequisites, 
-        command-line examples, troubleshooting guidance, and verification steps for developer audiences.</p>
-        <p class="demonstrates">Demonstrates: Developer tutorials, CLI tools, cross-platform setup</p>
+      <div class="sample-meta">Beckman Coulter, Inc. | PN B05577AB | October 2011</div>
+      <h3>Beckman Coulter LS 13 320 laser diffraction particle size analyzer</h3>
+      <a class="sample-link" href="https://ccobine.github.io/portfolio/B05577AB_example.pdf">Download PDF</a>
+      <p>
+        Instructions for use (IFU) for an FDA-regulated Class II laser instrument, written for trained
+        laboratory operators with no assumption of prior familiarity with laser safety standards.
+        Covers safety classifications, laser precautions per 21 CFR Subchapter J, calibration and
+        operational procedures, and user conventions. Authored in Beckman Coulter's structured
+        FrameMaker environment under standard medical device documentation controls.
+      </p>
+      <div class="demonstrates">
+        <span class="demonstrates-label">Demonstrates</span>
+        <span class="tag">Medical device writing</span>
+        <span class="tag">Regulatory compliance</span>
+        <span class="tag">Structured authoring</span>
+        <span class="tag">FrameMaker</span>
+        <span class="tag">Safety documentation</span>
+      </div>
     </div>
 
+    <!-- Sample 2 -->
     <div class="sample">
-        <h3>3. Generate a Static Site from GitHub</h3>
-        <p class="meta">Samsung/Joyent Internal Documentation (2020)</p>
-        <p><a href="GenerateastaticsitefromGithub-011021-2215-8[1119].pdf" target="_blank">Download PDF →</a></p>
-        <p>General information on SSGs.</p>
-        <p class="demonstrates">Demonstrates: Docs-as-code workflows, documentation tooling, developer environments</p>
+      <div class="sample-meta">Triton DataCenter blog | 2018</div>
+      <h3>Getting started with Triton CLI on Windows Subsystem for Linux</h3>
+      <a class="sample-link" href="https://www.tritondatacenter.com/blog/getting-started-windows-wsl">View live article</a>
+      <p>
+        Developer-facing tutorial covering end-to-end CLI installation using Windows Subsystem for Linux,
+        written for engineers new to the Triton environment on Windows hosts. Walks through environment
+        prerequisites, installation steps, command verification, and common troubleshooting scenarios.
+        Structured to reduce support contact by anticipating the failure points most likely to trip up
+        developers during first-run setup.
+      </p>
+      <div class="demonstrates">
+        <span class="demonstrates-label">Demonstrates</span>
+        <span class="tag">Developer tutorials</span>
+        <span class="tag">CLI documentation</span>
+        <span class="tag">Cross-platform setup</span>
+        <span class="tag">Troubleshooting guidance</span>
+      </div>
     </div>
 
+    <!-- Sample 3 -->
     <div class="sample">
-        <h3>4. Connecting Databricks to S3-Compatible Object Storage</h3>
-        <p class="meta">Samsung/Joyent Internal Documentation (2019, company details anonymized)</p>
-        <p><a href="Connect_Databricks_to_Object_Storage.pdf" target="_blank">Download PDF →</a></p>
-        <p>Multi-platform integration guide for connecting cloud data processing platform to distributed 
-        object storage via AWS. Includes IAM configuration, workspace setup, cluster creation, and Spark integration.</p>
-        <p class="demonstrates">Demonstrates: Cloud architecture documentation, complex multi-system configuration, 
-        security/IAM, code examples</p>
+      <div class="sample-meta">Samsung / Joyent internal documentation | 2020</div>
+      <h3>Generate a static site from GitHub</h3>
+      <a class="sample-link" href="https://ccobine.github.io/portfolio/GenerateastaticsitefromGithub-011021-2215-8[1119].pdf">Download PDF</a>
+      <p>
+        Internal guide written to help engineering and documentation teams evaluate and adopt static
+        site generators (SSGs) in a docs-as-code workflow. Explains the SSG model, key tooling
+        considerations, and the process for generating and deploying a site from a GitHub repository.
+        Written for a mixed audience of developers and non-developer contributors unfamiliar with
+        the build pipeline.
+      </p>
+      <div class="demonstrates">
+        <span class="demonstrates-label">Demonstrates</span>
+        <span class="tag">Docs-as-code</span>
+        <span class="tag">Static site generators</span>
+        <span class="tag">Developer tooling</span>
+        <span class="tag">Internal documentation</span>
+      </div>
     </div>
 
-        <div class="sample">
-        <h3>5. General Writing</h3>
-        <p class="meta">General writing samples</p>
-        <p><a href="Tech writing samples.pdf" target="_blank">Download PDF →</a></p>
-        <p>Examples of writing across industries.</p>
-        <p class="demonstrates">Demonstrates: Versatilty across industries</p>
+    <!-- Sample 4 -->
+    <div class="sample">
+      <div class="sample-meta">Samsung / Joyent internal documentation | 2019 | Company details anonymized</div>
+      <h3>Connecting Databricks to S3-compatible object storage</h3>
+      <a class="sample-link" href="https://ccobine.github.io/portfolio/Connect_Databricks_to_Object_Storage.pdf">Download PDF</a>
+      <p>
+        Integration guide for connecting a Databricks workspace to distributed object storage via
+        an S3-compatible API. Covers IAM credential configuration, workspace and cluster setup,
+        storage mount procedures, and Spark read/write validation. Written for cloud engineers
+        and data platform administrators managing hybrid or multi-cloud data pipelines,
+        with annotated code examples throughout.
+      </p>
+      <div class="demonstrates">
+        <span class="demonstrates-label">Demonstrates</span>
+        <span class="tag">Cloud architecture docs</span>
+        <span class="tag">Multi-system integration</span>
+        <span class="tag">IAM / security</span>
+        <span class="tag">Code examples</span>
+        <span class="tag">Data platform</span>
+      </div>
     </div>
-    <h2>Additional Experience</h2>
-    <p>At Samsung/Joyent (2017-2023), I created and managed 26 ServiceNow technical knowledge bases serving 
-    developer, admin, and end-user audiences. Work included API documentation, infrastructure guides, CLI tutorials, 
-    and platform configuration for distributed cloud systems.</p>
 
-    <p>Current work (2024-present) testing and refining AI models for content generation, architecting 
-    enterprise documentation governance systems, and creating technical compliance documentation that passed 
-    federal audit with zero findings.</p>
-
-    <div class="contact">
-        <p><strong>Contact:</strong> <a href="mailto:carolcobine@gmail.com">carolcobine@gmail.com</a></p>
+    <!-- Sample 5 -->
+    <div class="sample">
+      <div class="sample-meta">Various clients and industries</div>
+      <h3>General writing samples</h3>
+      <a class="sample-link" href="https://ccobine.github.io/portfolio/Tech writing samples.pdf">Download PDF</a>
+      <p>
+        A cross-industry collection demonstrating range across content types and audience registers —
+        including consumer-facing instructional content, industry training materials, and procedural
+        documentation for non-technical audiences. Reflects work outside enterprise software
+        contexts, including pest control, fitness, and foodservice industries.
+      </p>
+      <div class="demonstrates">
+        <span class="demonstrates-label">Demonstrates</span>
+        <span class="tag">Cross-industry writing</span>
+        <span class="tag">Audience adaptation</span>
+        <span class="tag">Consumer-facing content</span>
+        <span class="tag">Training materials</span>
+      </div>
     </div>
+
+  </section>
+
+  <!-- Additional experience -->
+  <section>
+    <div class="section-label">Additional experience</div>
+
+    <div class="xp-block">
+      <h3>Samsung / Joyent — Knowledge base program (2017–2023)</h3>
+      <p>
+        Built and managed <strong>26 ServiceNow technical knowledge bases</strong> serving developer,
+        administrator, and end-user audiences across Joyent's cloud platform. Work included API
+        documentation, infrastructure guides, CLI tutorials, and platform configuration documentation
+        for distributed cloud systems. Operated as the sole documentation resource for extended
+        periods, establishing structure and governance where none previously existed.
+      </p>
+    </div>
+
+    <div class="xp-block">
+      <h3>AI content tuning and enterprise governance (2024–present)</h3>
+      <p>
+        Engaged in testing and refining AI models for content generation accuracy and tone.
+        Architected enterprise documentation governance systems for compliance-focused
+        environments. Authored technical compliance documentation that passed
+        <strong>federal audit with zero findings</strong>.
+      </p>
+    </div>
+
+  </section>
+
+</div>
 </body>
 </html>
